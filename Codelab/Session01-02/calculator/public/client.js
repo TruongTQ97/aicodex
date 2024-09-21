@@ -24,6 +24,21 @@ function calculate(operand1, operand2, operation) {
         case '+':
             uri += "?operation=add";
             break;
+        case '-':
+            uri += "?operation=subtract";
+            break;
+        case '*':
+            uri += "?operation=multiply";
+            break;
+        case '/':
+            uri += "?operation=divide";
+            break;
+        case '%':
+            uri += "?operation=mod";
+            break;
+        case '^':
+            uri += "?operation=power";
+            break;
 
         default:
             setError();
@@ -189,4 +204,23 @@ function setLoading(loading) {
     for (var i = 0; i < buttons.length; i++) {
         buttons[i].disabled = loading;
     }
+}
+function subtractPressed() {
+    operationPressed('-');
+}
+ 
+function multiplyPressed() {
+    operationPressed('*');
+}
+ 
+function dividePressed() {
+    operationPressed('/');
+}
+ 
+function modPressed() {
+    operationPressed('%');
+}
+ 
+function powerPressed() {
+    operationPressed('^');
 }
