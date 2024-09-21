@@ -66,3 +66,4 @@ exports.calculate = function(req, res) {
   }
 
   res.json({ result: operation(req.query.operand1, req.query.operand2) });
+};
