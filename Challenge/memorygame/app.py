@@ -3,12 +3,16 @@ from game.board import Board
 
 app = Flask(__name__)
 
-@app.route('/')
+@app.route('/home')
 def index():
+    return render_template('index.html')
+
+@app.route('/singleplayer')
+def singleplayer():
     board = Board()
     board.initialize()
     grid = board.get_grid()
-    return render_template('index.html', board=board.cards, grid=grid)
+    return render_template('singleplayer.html', board=board.cards, grid=grid)
 
 @app.route('/flip', methods=['POST'])
 def flip():

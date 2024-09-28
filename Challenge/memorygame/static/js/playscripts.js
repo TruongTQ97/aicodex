@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const cards = document.querySelectorAll('.card');
     let flippedCards = [];
+    let score = 0;
 
     cards.forEach(card => {
         card.addEventListener('click', () => {
@@ -13,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (flippedCards[0].dataset.name === flippedCards[1].dataset.name) {
                         flippedCards.forEach(flippedCard => {
                             flippedCard.classList.add('match');
+                            onCardMatch();
                         });
                         setTimeout(() => {
                             flippedCards.forEach(flippedCard => {
@@ -35,5 +37,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
         });
+    });
+
+    // Function to update the score
+    function updateScore(points) {
+        score += points;
+        document.getElementById('score').textContent = score;
+    }
+
+    function onCardMatch() {
+        updateScore(10); // Add 10 points for a match
+    }
+
+    document.getElementById('home-button').addEventListener('click', function() {
+        score = 0
+        window.location.href = '/home';
     });
 });
